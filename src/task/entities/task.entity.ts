@@ -6,6 +6,9 @@ export class Task {
     @Prop({type : String , required : true})
     title : string
 
+    @Prop({type : String , default : 'https://png.pngtree.com/element_our/20190530/ourmid/pngtree-correct-icon-image_1267804.jpg'})
+    icon : string
+
     @Prop({type : String})
     description : string
 

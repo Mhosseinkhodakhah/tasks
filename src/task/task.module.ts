@@ -17,7 +17,7 @@ import { ConfigModule } from '@nestjs/config';
 export class TaskModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(auth).forRoutes({ path: 'task/done/:taskId', method: RequestMethod.PATCH },
-      { path: 'task/done/:taskId', method: RequestMethod.PATCH },
-      { path: 'task/done/:taskId', method: RequestMethod.PATCH })
+      // { path: 'task/done/:taskId', method: RequestMethod.PATCH },
+      { path: 'task/all', method: RequestMethod.GET })
   }
 }

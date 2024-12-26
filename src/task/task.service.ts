@@ -26,8 +26,10 @@ export class TaskService {
 
   async getAllTasks(req : any , res : any){
     try {
-      const allTasks = await this.taskModle.find()
-      return new Respons(req , res , 200 , 'get all task' , null , allTasks)  
+      let userId : string = req.user._id;
+      const allDoneTasks = await this.taskModle.find({Completed : {$in : userId}})
+      const allTasks = await this.taskModle.find({Completed : {$ne : userId}})
+      return new Respons(req , res , 200 , 'get all task' , null , {done : allDoneTasks , allTasks : allTasks})  
     } catch (error) {
       return new Respons(req , res , 500 , 'get all task' , `${error}` , null)  
     }
